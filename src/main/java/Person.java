@@ -18,7 +18,7 @@ public class Person
 	
 	public void setFName(String Fname)
 	{
-		this.FName="bejw";
+		this.FName="FName";
 	}
 	
 	public void setLname(String Lname)
