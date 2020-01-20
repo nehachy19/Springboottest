@@ -37,6 +37,32 @@ public class PersonTest
         String ActualFname= a1.getFName();
         assertEquals(expectectedFname, ActualFname);
     }
+    @Test
+    public void getFname()
+    {
+        String ExpexctFname="Neha";
+        String AcctualFname= a1.getFName();
+        assertEquals(ExpexctFname,AcctualFname);
+    }
+    @Test
+    public void setLname()
+    {
+        String ExpectedLname="Vats";
+        a1.setLname(ExpectedLname);
+        String ActualLname=a1.getLname();
+        assertEquals(ExpectedLname, ActualLname);
+    }
+    @Test
+
+        public void getLname()
+            {
+                 String ExpectedLname="Kumari";
+                 String ActualLname=a1.getLname();
+                 assertEquals(ExpectedLname, ActualLname);
+
+            }
+
+
 
     @After
     public void destroy()
