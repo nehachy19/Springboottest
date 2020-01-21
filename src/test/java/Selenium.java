@@ -7,6 +7,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 
 public class Selenium {
@@ -21,7 +25,7 @@ public class Selenium {
         Actions actions = new Actions(driver);
         WebElement Login= driver.findElement(By.xpath("//div[@class='od-container od-container-lg od-header-account-status-message']"));
         Login.click();
-        Thread.sleep(5000);
+        Thread.sleep(6000);
         WebElement Popup=driver.findElement(By.xpath("//button[@alt='Decline my savings; close the dialog']"));
         Popup.click();
         Thread.sleep(4000);
@@ -31,6 +35,22 @@ public class Selenium {
         password.sendKeys("Ilovemsd@07");
         WebElement LoginButton=driver.findElement(By.xpath("//button[@class='btn arrow sm_txt js_loginBtn']"));
         LoginButton.click();
+        WebElement CartFresh=driver.findElement(By.xpath("//span[@class='od-header-badge od-header-cart-icon-badge']"));
+        CartFresh.click();
+        WebElement ProductCancel=driver.findElement(By.xpath("//div[contains(@data-auid, 'CartRemove')]"));
+        List<WebElement> myDynamicList =  driver.findElements(By.xpath("//div[contains(@data-auid, 'CartRemove')]"));
+        Thread.sleep(2000);
+        int a=myDynamicList.size();
+        for (int i=0; i<=a;i++)
+        {
+           ProductCancel.click();
+
+           Thread.sleep(2000);
+        }
+        Thread.sleep(2000);
+
+        WebElement Contshopping=driver.findElement(By.xpath("//a[@data-auid='OdCart_OdButton_EmptyCartContinueShopping']"));
+        Contshopping.click();
         WebElement Search=driver.findElement(By.xpath("//input[@placeholder='Search']"));
         Search.sendKeys("pen");
         WebElement Find=driver.findElement(By.xpath("//button[@data-auid='Header_OdHeaderSearchIcon_SearchIconMagnifyGlass']"));
