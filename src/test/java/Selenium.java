@@ -37,15 +37,28 @@ public class Selenium {
         LoginButton.click();
         WebElement CartFresh=driver.findElement(By.xpath("//span[@class='od-header-badge od-header-cart-icon-badge']"));
         CartFresh.click();
-        WebElement ProductCancel=driver.findElement(By.xpath("//div[contains(@data-auid, 'CartRemove')]"));
+
         List<WebElement> myDynamicList =  driver.findElements(By.xpath("//div[contains(@data-auid, 'CartRemove')]"));
+
         Thread.sleep(2000);
         int a=myDynamicList.size();
-        for (int i=0; i<=a;i++)
+        System.out.println(""+a);
+        for (int i=0; i<a;i++)
         {
-           ProductCancel.click();
+            try {
+                WebElement ProductCancel=driver.findElement(By.xpath("//div[contains(@data-auid, 'CartRemove')]"));
+                ProductCancel.click();
 
-           Thread.sleep(2000);
+            }
+            catch(org.openqa.selenium.StaleElementReferenceException ex)
+            {
+                WebElement ProductCancel=driver.findElement(By.xpath("//div[contains(@data-auid, 'CartRemove')]"));
+                ProductCancel.click();
+            }
+
+
+
+
         }
         Thread.sleep(2000);
 
@@ -80,6 +93,7 @@ public class Selenium {
 
         WebElement CartInfo=driver.findElement(By.xpath("//span[@class='od-header-cart-icon-badge-container']"));
         CartInfo.click();
+        Thread.sleep(2000);
         WebElement CartItems=driver.findElement(By.xpath("//img[@src='https://officedepot.scene7.com/is/image/officedepot/664011_o01_bic_round_stic_ballpoint_pens?$OD%2DMed$']"));
         CartItems.equals(Product);
 
