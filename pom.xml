@@ -15,6 +15,12 @@
     
     <!-- Add typical dependencies for a web application -->
     <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>2.42.2</version>
+        </dependency>
+
 
     <!-- Spring boot -->
 
