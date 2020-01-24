@@ -5,6 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 public class Search {
       @Test
     public void website2() throws InterruptedException {
@@ -33,6 +38,21 @@ public class Search {
           pen.isDisplayed();
 
 
+          //get the count
+            List<WebElement> pencount= driver.findElements(By.xpath("//ul[@data-auid='Header_OdMenu_SearchResult']//li"));
+            int penrecomcount=pencount.size();
+
+            for(int i=0;i<penrecomcount;i++)
+            {
+                  String text=pencount.get(i).getText().toLowerCase();
+                  int k=text.indexOf("pen");
+                  if(k!=0 && text.charAt(k-1)!=' ')
+                  {
+                        System.out.println(text);
+                        fail();
+                  }
+
+            }
 
 
 }}
