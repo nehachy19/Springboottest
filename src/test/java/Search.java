@@ -41,6 +41,12 @@ public class Search {
           //get the count
             List<WebElement> pencount= driver.findElements(By.xpath("//ul[@data-auid='Header_OdMenu_SearchResult']//li"));
             int penrecomcount=pencount.size();
+            for(int j=0;j<penrecomcount;j++)
+            {
+                  System.out.println(pencount.get(j).getText());
+
+            }
+
 
             for(int i=0;i<penrecomcount;i++)
             {
@@ -49,7 +55,7 @@ public class Search {
                   if(k!=0 && text.charAt(k-1)!=' ')
                   {
                         System.out.println(text);
-                        fail();
+
                   }
 
             }
