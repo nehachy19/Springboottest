@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @EnableAutoConfiguration
 public class MainClass 
 {
-		ArrayList<Person> pList= new ArrayList<Person>();
+		static ArrayList<Person> pList= new ArrayList<Person>();
 		@RequestMapping("/")
 	    String home() 
 		{
@@ -21,16 +21,7 @@ public class MainClass
 		@GetMapping("/person/{name}")
 		@ResponseBody
 		public Person getPerson(@PathVariable String name) 
-		{
-			Person p1 = new Person(30,"Tarun","Vats");	
-			Person p2 = new Person(26,"Vikas","Vats");
-			Person p3 = new Person(17,"Harsh","Vats");
-			Person p4 = new Person(27,"Kaku","Chaudhary");			
-			pList.add(p1);
-			pList.add(p2);
-			pList.add(p3);
-			pList.add(p4);
-			
+		{			
 			for(int i=0; i<pList.size();i++)
 			{				
 				if(pList.get(i).getFName().equals(name))
@@ -38,6 +29,12 @@ public class MainClass
 			}
 			return null;
 			
+		}
+		@GetMapping("/person")
+		@ResponseBody
+		public ArrayList<Person> showAllPerson()
+		{			
+			return pList;
 		}
 		@PostMapping("/person")
 		@ResponseBody
@@ -65,5 +62,13 @@ public class MainClass
 
     public static void main(String[] args) {
         SpringApplication.run(MainClass.class, args);
+        Person p1 = new Person(30,"Tarun","Vats");	
+		Person p2 = new Person(26,"Vikas","Vats");
+		Person p3 = new Person(17,"Harsh rsh","Vats");
+		Person p4 = new Person(27,"Kaku","Chaudhary");			
+		pList.add(p1);
+		pList.add(p2);
+		pList.add(p3);
+		pList.add(p4);
     }
 }
