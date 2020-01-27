@@ -1,3 +1,4 @@
+package project.controllers;
 
 public class Person 
 {
@@ -5,7 +6,7 @@ public class Person
 	String FName;
 	String Lname;
 	
-	Person(Integer age,String FName,String Lname)
+	public Person(Integer age,String FName,String Lname)
 	{
 		this.age=age;
 		this.FName=FName;
@@ -25,7 +26,7 @@ public class Person
 	{
 		this.Lname=Lname;
 	}
-	
+
 	
 	public Integer getAge()
 	{
