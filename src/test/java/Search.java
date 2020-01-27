@@ -43,9 +43,13 @@ public class Search {
             int penrecomcount=pencount.size();
             for(int j=0;j<penrecomcount;j++)
             {
-                  System.out.println(pencount.get(j).getText());
+                if(pencount.get(j).getText().contains("pens"));
+                {
+                    System.out.println(pencount.get(j).getText());
+                }
+               }
 
-            }
+
 
 
             for(int i=0;i<penrecomcount;i++)
