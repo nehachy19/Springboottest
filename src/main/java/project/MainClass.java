@@ -6,6 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import project.controllers.Person;
+import project.controllers.PersonController;
 import repository.ProductRepository;
 
 @SpringBootApplication
@@ -15,11 +17,11 @@ public class MainClass
 {
 	public static void main(String[] args) {
 		SpringApplication.run(MainClass.class, args);
-		/*
-		 * Person p1 = new Person(30,"Tarun","Vats"); Person p2 = new
-		 * Person(26,"Vikas","Vats"); Person p3 = new Person(17,"Harsh rsh","Vats");
-		 * Person p4 = new Person(27,"Kaku","Chaudhary"); pList.add(p1); pList.add(p2);
-		 * pList.add(p3); pList.add(p4);
-		 */
+		
+		 Person p1 = new Person(30,"Tarun","Vats"); Person p2 = new
+		 Person(26,"Vikas","Vats"); Person p3 = new Person(17,"Harsh rsh","Vats");
+		 Person p4 = new Person(27,"Kaku","Chaudhary"); PersonController.pList.add(p1); PersonController.pList.add(p2);
+		 PersonController.pList.add(p3); PersonController.pList.add(p4);
+		 
 	}
 }

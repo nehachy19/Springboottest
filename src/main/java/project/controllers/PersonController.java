@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PersonController
 {
-	static ArrayList<Person> pList= new ArrayList<Person>();
+	public static ArrayList<Person> pList= new ArrayList<Person>();
 	@RequestMapping("/")
     String home() 
 	{
