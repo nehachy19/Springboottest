@@ -1,0 +1,19 @@
+{
+	"id": "81792e43-a97c-4413-86cd-8e9fef0ac4b4",
+	"values": [
+		{
+			"key": "name",
+			"value": "tarunppp",
+			"enabled": true
+		},
+		{
+			"key": "variable_key",
+			"value": "variable_value",
+			"enabled": true
+		}
+	],
+	"name": "Neha Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2020-01-28T03:21:53.848Z",
+	"_postman_exported_using": "Postman/7.16.1"
+}
