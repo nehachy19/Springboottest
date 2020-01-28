@@ -1,0 +1,308 @@
+{
+	"info": {
+		"_postman_id": "524c8474-ffd7-418d-9565-85814afc8569",
+		"name": "First",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post",
+			"item": [
+				{
+					"name": "Posting Data of One Person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b4329d3-8665-4fa4-a0b0-b85442d057b7",
+								"exec": [
+									"//Status Code Verification",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([201,200]);",
+									"});",
+									"//STring Match",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Nehu\");",
+									"",
+									"});",
+									"});",
+									"});",
+									"//Verifying Schema",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console}),",
+									"    schema = {",
+									"                // Paste JSON Schema generated from BrijPad here... ",
+									"                ",
+									"   ",
+									"    \"required\": [",
+									"        \"age\",",
+									"        \"lname\",",
+									"        \"fname\"",
+									"    ],",
+									"    \"properties\": {",
+									"        \"age\": {",
+									"            \"$id\": \"#/properties/age\",",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"lname\": {",
+									"            \"$id\": \"#/properties/lname\",",
+									"            \"type\": \"string\"",
+									"        },",
+									"        \"fname\": {",
+									"            \"$id\": \"#/properties/fname\",",
+									"            \"type\": \"string\"",
+									"        }",
+									"    },",
+									"    \"$id\": \"http://example.org/root.json#\",",
+									"    \"type\": \"object\",",
+									"    \"definitions\": {},",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"",
+									"",
+									"    };",
+									" ",
+									"pm.test('Schema is valid', function() {",
+									"    var data = pm.response.json();",
+									"    pm.expect(ajv.validate(schema, data)).to.be.true;",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"fname\":\"Janu\",\n\t\"age\":67,\n\t\"lname\":\"vats\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/person",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Of Person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dffed194-5ff9-424f-9654-cfbad522c102",
+								"exec": [
+									"//Status Code",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"//Body MAtch",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Tarun\");",
+									"});",
+									"",
+									"//Verifying Schema",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console}),",
+									"    schema = {",
+									"        ",
+									"                // Paste JSON Schema generated from BrijPad here... ",
+									"                \"items\": {",
+									"        \"required\": [",
+									"            \"age\",",
+									"            \"lname\",",
+									"            \"fname\"",
+									"        ],",
+									"        \"properties\": {",
+									"            \"age\": {",
+									"                \"$id\": \"#/items/properties/age\",",
+									"                \"type\": \"integer\"",
+									"            },",
+									"            \"lname\": {",
+									"                \"$id\": \"#/items/properties/lname\",",
+									"                \"type\": \"string\"",
+									"            },",
+									"            \"fname\": {",
+									"                \"$id\": \"#/items/properties/fname\",",
+									"                \"type\": \"string\"",
+									"            }",
+									"        },",
+									"        \"$id\": \"#/items\",",
+									"        \"type\": \"object\"",
+									"    },",
+									"    \"$id\": \"http://example.org/root.json#\",",
+									"    \"type\": \"array\",",
+									"    \"definitions\": {},",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"",
+									"    };",
+									" ",
+									"pm.test('Schema is valid', function() {",
+									"    var data = pm.response.json();",
+									"    pm.expect(ajv.validate(schema, data)).to.be.true;",
+									"});",
+									"",
+									"pm.expect(pm.response.headers.get(\"Content-Type\")).to.eql(\"application/json\");",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/person",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"person"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Get",
+			"item": [
+				{
+					"name": "Get Info of Single Person",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d9d5eec3-713e-42d8-9de3-b039e6787ac0",
+								"exec": [
+									"   //Status Code",
+									"    pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"//BOdy MAtch",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Tarun\");",
+									"});",
+									"",
+									"//Verify ppmy data is correct or not",
+									"pm.test(\"Verifiying Info\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.fname).to.eql('Tarun');",
+									"    pm.expect(jsonData.age).to.eql(30);",
+									"    pm.expect(jsonData.lname).to.eql('Vats');",
+									"    ",
+									"    ",
+									"});",
+									"//",
+									"",
+									"",
+									"",
+									"",
+									"",
+									"//Verifying Schema",
+									"",
+									"",
+									"var Ajv = require('ajv'),",
+									"    ajv = new Ajv({logger: console}),",
+									"    schema = {",
+									"                // Paste JSON Schema generated from BrijPad here... ",
+									"                ",
+									"   ",
+									"    \"required\": [",
+									"        \"age\",",
+									"        \"lname\",",
+									"        \"fname\"",
+									"    ],",
+									"    \"properties\": {",
+									"        \"age\": {",
+									"            \"$id\": \"#/properties/age\",",
+									"            \"type\": \"integer\"",
+									"        },",
+									"        \"lname\": {",
+									"            \"$id\": \"#/properties/lname\",",
+									"            \"type\": \"string\"",
+									"        },",
+									"        \"fname\": {",
+									"            \"$id\": \"#/properties/fname\",",
+									"            \"type\": \"string\"",
+									"        }",
+									"    },",
+									"    \"$id\": \"http://example.org/root.json#\",",
+									"    \"type\": \"object\",",
+									"    \"definitions\": {},",
+									"    \"$schema\": \"http://json-schema.org/draft-07/schema#\"",
+									"",
+									"    };",
+									" ",
+									"pm.test('Schema is valid', function() {",
+									"    var data = pm.response.json();",
+									"    pm.expect(ajv.validate(schema, data)).to.be.true;",
+									"});",
+									"pm.environment.get(\"variable_key\");",
+									"pm.variables.get(\"variable_key\");",
+									"pm.environment.set(\"variable_key\", \"variable_value\");",
+									"pm.globals.set(\"variable_key\", \"variable_value\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/person/Tarun",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"person",
+								"Tarun"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
